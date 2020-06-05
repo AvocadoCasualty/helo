@@ -18,11 +18,13 @@ app.use(
     })
 );
 
-//endpoints
+//auth endpoints
 app.post('/api/auth/register', ctrl.register)
 app.post('/api/auth/login', ctrl.login)
 app.delete('api/auth/logout', ctrl.logout)
-app.get
+app.get('api/auth/user', ctrl.getUser)
+
+//endpoints
 
 massive({
     connectionString: CONNECTION_STRING,
