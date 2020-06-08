@@ -1,15 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Nav from "./components/Nav/Nav";
 import routes from "./routes";
+import {withRouter} from 'react-router'
 
-function App() {
-    return (
-        <div className="App">
-            <Nav/>
-            {routes}
-        </div>
-    );
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            showNav: true
+        }
+    }
+
+    isThisAnythingButAuth() {
+        return this.props.location.pathname !== '/';
+    }
+
+
+    render() {
+        const renderNav = () => {
+            if (this.isThisAnythingButAuth()) {
+                return <Nav/>
+            }
+        }
+        console.log(this.props.location.pathname)
+        return (
+            <div className="App">
+                {renderNav()}
+                {routes}
+            </div>
+        );
+    }
+
+
 }
 
-export default App;
+const AppWithRouter = withRouter(App);
+export default AppWithRouter;

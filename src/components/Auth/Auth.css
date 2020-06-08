@@ -1,0 +1,17 @@
+.Auth {
+    height: 200px;
+    width: 20%;
+    padding: 20px;
+    box-shadow: #282c34 0px 14px 28px;
+}
+
+input {
+    margin: 50px;
+}
+
+button {
+    background-color: #403d39;
+    color: white;
+    padding: 5px;
+    border: #282c34;
+}

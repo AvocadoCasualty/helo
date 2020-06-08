@@ -34,7 +34,7 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt)
 
         const newUser = await db.register_user([username, hash])
-        delete newUser[0].hash
+        // delete newUser[0].hash - this causes errors!!!!!
         req.session.user = newUser[0]
         return res.status(200).send(req.session.user)
     },
