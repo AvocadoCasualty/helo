@@ -1,6 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+  margin: 0px;
+  background-color: #f2f2f2;
 }
 .App {
   display: flex;

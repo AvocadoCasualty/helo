@@ -23,7 +23,6 @@ class App extends Component {
                 return <Nav/>
             }
         }
-        console.log(this.props.location.pathname)
         return (
             <div className="App">
                 {renderNav()}

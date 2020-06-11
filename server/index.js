@@ -25,6 +25,7 @@ app.delete('api/auth/logout', ctrl.logout)
 app.get('api/auth/user', ctrl.getUser)
 
 //endpoints
+app.get('/api/dashboard/posts/', ctrl.getPosts)
 
 massive({
     connectionString: CONNECTION_STRING,

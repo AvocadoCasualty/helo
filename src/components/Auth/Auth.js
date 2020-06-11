@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './Auth.css'
 import axios from 'axios';
-import { connect } from 'react-redux'
-import { loginUser } from "../../redux/reducer";
+import {connect} from 'react-redux'
+import {loginUser} from "../../redux/reducer";
 
 
 class Auth extends Component {
@@ -15,7 +15,8 @@ class Auth extends Component {
     }
 
     changeHandler = (e) => {
-        this.setState({ [e.target.name]: e.target.value
+        this.setState({
+            [e.target.name]: e.target.value
         })
     }
 
@@ -47,23 +48,29 @@ class Auth extends Component {
     render() {
         const {username, password} = this.state
         return (
-            <div className="Auth">
-                <input
-                    type='text'
-                    placeholder='username'
-                    name="username"
-                    value={username}
-                    onChange={(e) => this.changeHandler(e)}
-                />
-                <input
-                    type='text'
-                    placeholder='password'
-                    name="password"
-                    value={password}
-                    onChange={(e) => this.changeHandler(e)}
-                />
-                <button onClick={this.login}>Login</button>
-                <button onClick={this.register}>Register</button>
+            <div className='auth-container'>
+                <div className="Auth">
+                    <img src="https://raw.githubusercontent.com/DevMountain/simulation-3/master/assets/helo_logo.png"/>
+                    <h1>Helo</h1>
+                    <input
+                        type='text'
+                        placeholder='username'
+                        name="username"
+                        value={username}
+                        onChange={(e) => this.changeHandler(e)}
+                    />
+                    <br/>
+                    <input
+                        type='password'
+                        placeholder='password'
+                        name="password"
+                        value={password}
+                        onChange={(e) => this.changeHandler(e)}
+                    />
+                    <br/>
+                    <button onClick={this.login}>Login</button>
+                    <button onClick={this.register}>Register</button>
+                </div>
             </div>
         );
     }
@@ -71,4 +78,4 @@ class Auth extends Component {
 
 const mapStateToProps = reduxState => reduxState
 
-export default connect(mapStateToProps,{loginUser})(Auth);
+export default connect(mapStateToProps, {loginUser})(Auth);
