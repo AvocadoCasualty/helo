@@ -25,6 +25,7 @@ module.exports = {
     register: async (req, res) => {
         const db = req.app.get('db');
         const {username, password} = req.body;
+        const profilePic = `https://robohash.org/${username}.png?set=set4`
 
         const existingUser = await db.check_user(username);
         if (existingUser[0]) {
@@ -34,7 +35,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
 
-        const newUser = await db.register_user([username, hash])
+        const newUser = await db.register_user([username, hash, profilePic])
         delete newUser[0].hash
         req.session.user = newUser[0]
         return res.status(200).send(req.session.user)
@@ -44,7 +45,6 @@ module.exports = {
         res.sendStatus(200);
     },
     getUser: (req, res) => {
-        console.log(req.session.user)
         if (req.session.user) {
             res.status(200).send(req.session.user)
         } else {
@@ -54,8 +54,9 @@ module.exports = {
     getPosts: (req, res) => {
         const db = req.app.get('db');
         const {userId} = req.session.user
+        console.log(req.session.user)
         const {userPosts, search} = req.query
-        console.log(req.query)
+
 
         if (userPosts === 'true' && !search) {
             db.get_all_posts()
@@ -73,7 +74,26 @@ module.exports = {
             db.get_posts_search_no_user(search, userId)
                 .then(posts => res.status(200).send(posts))
                 .catch(error => res.status(500).send(error))
-        } else { res.status(200).send(['missed alllllll them'])}
+        } else {
+            res.status(200).send(['missed all the the queries'])
+        }
 
+    },
+    getOnePost: (req, res) => {
+        const db = req.app.get('db')
+        const {postId} = req.params
+
+        db.get_single_post(postId)
+            .then(post => res.status(200).send(post))
+            .catch(error => res.status(500).send(error))
+
+    },
+    createPost: (req, res) => {
+        const db = req.app.get('db')
+        const {title, img, content, userId} = req.body
+
+        db.new_post(title, img, content, userId)
+            .then(post => res.status(200).send(post))
+            .catch(error => res.status(500).send(error))
     }
 }

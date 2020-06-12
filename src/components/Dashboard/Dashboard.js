@@ -16,9 +16,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        console.log('inside componentDidMount')
         axios.get(`/api/dashboard/posts/?userPosts=true`).then(res => {
-            console.log('inside .then')
             this.setState({
                 posts: res.data
             })
@@ -36,7 +34,7 @@ class Dashboard extends Component {
             return (
                 <div className='posts' key={e.post_id}>
                     <h2>{e.title}</h2>
-                    <p>by {e.username}<img src={e.img}/></p>
+                    <p>by {e.username}<img src={e.profile_pic}/></p>
                 </div>
             )
         })

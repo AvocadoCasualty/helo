@@ -11,7 +11,7 @@ class Nav extends Component{
         return (
             <div className="Nav">
                 <Link to='/dashboard'> Home </Link>
-                <Link to='/post'> New Post </Link>
+                <Link to='/new'> New Post </Link>
                 <Link to='/'> Logout </Link>
             </div>
         );
