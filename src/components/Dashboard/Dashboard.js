@@ -29,12 +29,14 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.state.posts)
         const posts = this.state.posts.map((e) => {
             return (
-                <div className='posts' key={e.post_id}>
+                <div
+                    className='individual-posts'
+                    key={e.post_id}
+                    onClick={() => this.props.history.push(`/post/${e.post_id}`)}>
                     <h2>{e.title}</h2>
-                    <p>by {e.username}<img src={e.profile_pic}/></p>
+                    <p>by {e.username}<img className='profile-pic' src={e.profile_pic}/></p>
                 </div>
             )
         })

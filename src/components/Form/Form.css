@@ -1,0 +1,28 @@
+.Form {
+    background-color: white;
+    height: 500px;
+    width: 70vw;
+    text-align: left;
+}
+.new-post{
+    color: #ffa979;
+}
+label {
+    padding-left: 30px;
+    font-weight: bold;
+}
+input, textarea {
+    width: 90%;
+    margin-left: 30px;
+}
+.content {
+    height: 60px;
+}
+p {
+    text-align: right;
+    margin: 20px;
+}
+button {
+    /*padding: 10px;*/
+    background-image: radial-gradient(circle at 50% -46%,#737373,#403d39);
+}

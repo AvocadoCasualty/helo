@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
-import Nav from "./components/Nav/Nav";
 import routes from "./routes";
 import {withRouter} from 'react-router'
+import Nav from "./components/Nav/Nav";
 
 class App extends Component {
     constructor() {

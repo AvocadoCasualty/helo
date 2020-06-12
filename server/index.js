@@ -26,8 +26,10 @@ app.get('api/auth/user', ctrl.getUser)
 
 //endpoints
 app.get('/api/dashboard/posts/', ctrl.getPosts)
-app.get('/api/dashboard/post/:postId', ctrl.getOnePost)
+app.get('/api/posts/:postId', ctrl.getOnePost)
 app.post('/api/new', ctrl.createPost)
+app.put('/api/new/:postId', ctrl.editPost)
+
 
 massive({
     connectionString: CONNECTION_STRING,

@@ -1,13 +1,31 @@
-.search-bar, .posts {
+.search-bar, .posts, .individual-posts {
     background-color: white;
     padding: 10px;
     margin: 10px;
-    width: 70vw;
+    width: 95%;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+}
+button {
+    margin: 1px;
 }
 .search-bar {
     display: flex;
     justify-content: space-between;
 }
 .search {
-    width: 40vw;
+    width: 50vw;
+    margin: 1px;
+}
+.profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
+    margin: 0 5px;
+    background-color: white;
+}
+.individual-posts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

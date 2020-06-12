@@ -54,7 +54,6 @@ module.exports = {
     getPosts: (req, res) => {
         const db = req.app.get('db');
         const {userId} = req.session.user
-        console.log(req.session.user)
         const {userPosts, search} = req.query
 
 
@@ -93,6 +92,15 @@ module.exports = {
         const {title, img, content, userId} = req.body
 
         db.new_post(title, img, content, userId)
+            .then(post => res.status(200).send(post))
+            .catch(error => res.status(500).send(error))
+    },
+    editPost: (req, res) => {
+        const db = req.app.get('db')
+        const {img} = req.body
+        const {postId}= req.params
+
+        db.edit_picture(img, postId)
             .then(post => res.status(200).send(post))
             .catch(error => res.status(500).send(error))
     }

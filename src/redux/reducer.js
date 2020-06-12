@@ -3,14 +3,15 @@ import axios from 'axios'
 const initialState = {
     user: {},
     userId: 0,
-    isLoggedIn: false
+    isLoggedIn: false,
+    currentPost: {}
 }
 
 const LOGIN_USER = 'LOGIN_USER'
 const LOGOUT_USER = 'LOGOUT_USER'
 const GET_USER = 'GET_USER'
 const USER_ID = 'USER_ID'
-const SET_POSTS = 'SET_POSTS'
+const REQUEST_POST = 'REQUEST_POST'
 
 export function loginUser(user) {
     return {
@@ -41,12 +42,13 @@ export function sendUser(userId) {
     }
 }
 
-export function setPosts(payload){
+export function requestPost(post){
     return{
-        type: SET_POSTS,
-        payload
+        type: REQUEST_POST,
+        payload: post
     }
 }
+
 export default function (state = initialState, action) {
     switch (action.type) {
         case LOGIN_USER:
@@ -59,8 +61,8 @@ export default function (state = initialState, action) {
             return {...state, user: action.payload.data, isLoggedIn: true}
         case GET_USER + 'REJECTED':
             return initialState
-        case SET_POSTS:
-            return {...state, posts: action.payload}
+        case REQUEST_POST:
+            return {...state, currentPost: action.payload}
         default:
             return initialState
     }
